@@ -1,0 +1,17 @@
+# Clone the Armbian build framework with our overlay
+git clone https://github.com/armbian/build armbian-build
+cd armbian-build
+
+# Copy our custom overlay
+cp -r ../userpatches .
+
+# Build!
+./compile.sh build \
+    BOARD=orangepi5 \
+    BRANCH=current \
+    RELEASE=trixie \
+    BUILD_MINIMAL=yes \
+    BUILD_DESKTOP=no \
+    KERNEL_CONFIGURE=no
+
+# Output: output/images/Armbian_orangepi5_trixie_current_*.img

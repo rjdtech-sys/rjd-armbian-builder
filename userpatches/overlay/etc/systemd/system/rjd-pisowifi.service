@@ -1,0 +1,18 @@
+[Unit]
+Description=AJC PISOWIFI Management System
+After=network.target network-online.target systemd-networkd.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/ajc-pisowifi
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+User=root
+Environment=NODE_ENV=production
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

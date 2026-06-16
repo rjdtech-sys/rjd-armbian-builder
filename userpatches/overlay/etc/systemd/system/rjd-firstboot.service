@@ -1,0 +1,15 @@
+[Unit]
+Description=AJC PISOWIFI First-Boot Configuration
+After=network.target network-online.target
+Wants=network-online.target
+ConditionPathExists=!/etc/ajc-firstboot-complete
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/ajc-firstboot.sh
+RemainAfterExit=no
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
